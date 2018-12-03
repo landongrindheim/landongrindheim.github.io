@@ -207,7 +207,6 @@ pre {
 /**
  * Icons
  */
-
 .svg-icon {
     width: 16px;
     height: 16px;
@@ -218,8 +217,9 @@ pre {
 }
 
 .social-media-list {
-  li + li {
-    padding-top: 5px;
+  .icon {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
