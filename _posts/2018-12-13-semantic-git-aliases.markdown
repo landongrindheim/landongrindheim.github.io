@@ -5,15 +5,13 @@ tags:
   - Git
 ---
 
-I've seen a lot of posts about configuring `.gitconfig` files with aliases like
-`co = checkout`. I can see the value in saving some keystrokes (and
-misspellings), but I personally don't use those aliases because the number of
-letters in a command is usually not the bottleneck I encounter with Git. I do,
-however, use a handful of aliases that I find very helpful. If I were to
-classify them, I'd say they're semantic aliases.
+I've seen quite a few posts about setting up `.gitconfig` files with aliases
+like `co = checkout`. I see the value in saving some keystrokes (and
+misspellings), but I personally don't use those aliases. Command length is
+rarely the pain point I experience with Git. I do, however, use a handful of
+aliases that I find very helpful. I like to classify them as semantic aliases.
 
 ## TL;DR
-
 ```bash
 [alias]
   uncommit = reset --soft HEAD^
@@ -23,15 +21,16 @@ classify them, I'd say they're semantic aliases.
 ```
 
 ### uncommit
-As of the time of writing, a question on StackOverflow named ["How to
-uncommit my last commit in Git"](https://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git)
+As of the time of writing, a question on StackOverflow named ["How to uncommit
+my last commit in Git"](https://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git)
 had been upvoted 666 times, and its accepted answer had been upvoted 1068 times.
-The title alone suggests what users are _trying_ to do. If you think about it,
-`git reset --soft HEAD^` makes sense, but [don't make me think](https://en.wikipedia.org/wiki/Don't_Make_Me_Think).
+The title alone suggests what users are _trying_ to do. They're just not sure
+how to accomplish it. The answer is to use `git reset --soft HEAD^`, which, if
+you spend some time thinking about it, makes sense. But [don't make me think](https://en.wikipedia.org/wiki/Don't_Make_Me_Think).
 
-Aliasing this command has taken that mental overhead out of the equation. And
-since I'm not searching for the correct syntax every time, it saves me time as
-well. It's been all upside.
+Aliasing the command to `uncommit` has taken the mental overhead out of the
+equation. And since I'm not searching for the correct syntax every time, it also
+saves me time. It's been all upside.
 
 ### unstage
 Here's what I see every time I issue `git status`:
@@ -40,11 +39,11 @@ Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 ```
 
-Use this command to **unstage**. While I don't need to open up my browser to
-look up the syntax, I still have to translate the command and its arguments
-to grok its purpose. Aliasing to `unstage` ends up adding a keystroke, but I
-find it reduces the mental energy spent on the task. Thanks to [Thoughtbot](https://thoughtbot.com/upcase/videos/git-customizing#aliases)
-for sharing and making my Git experience better.
+"Use ... to **unstage**". While I don't need to open up my browser to look up
+the syntax, I still have to translate the command and arguments to understand
+its purpose. Aliasing to `unstage` ends up adding a keystroke, but I find it
+reduces the mental energy spent on the task. Thanks to [Thoughtbot](https://thoughtbot.com/upcase/videos/git-customizing#aliases)
+for sharing and making my Git experience better!
 
 ### staged
 I try to be very intentional about my commits, grouping alike changes to ensure
