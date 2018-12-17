@@ -13,21 +13,21 @@ that instance variable to do some important work.
 If you're familiar with variable ownership in Ruby, you can probably see where
 this is going. Since each class is an instance of `Class`, an instance
 variable in a class method belongs to the class. Each time that method is
-called, the exact same intsance variable is referenced.  In a multi-threaded
+called, the exact same instance variable is referenced.  In a multi-threaded
 context, this can have some very undesirable side effects.
 
 I'll create a contrived scenario to illustrate. Say we're a bank and we've got
 customers who want their balance emailed to them each night. We assume customers
-that carry no balance shouldn't get emails. We've created `BalanceNotitfication`
-to handle this.
+that carry no balance shouldn't get emails. We've created `BalanceNotice` to
+handle this.
 
 ```ruby
-class BalanceNotitfication
-  def self.send(email, balance)
+class BalanceNotice
+  def self.mail(email, balance)
     @balance = balance.to_f
 
     if should_email?
-      BalanceMailer.send(to: email, subject: "Your balance is #{@balance}")
+      BalanceMailer.mail(to: email, subject: "Your balance is #{@balance}")
     end
   end
 
@@ -46,24 +46,24 @@ Something is wrong. They're receiving emails with balances from other accounts.
 Here's how that could happen:
 
 ```ruby
- BalanceNotice.send("joe@joe.com", 50) |
+ BalanceNotice.mail("joe@joe.com", 50) |
      @balance = 50.0                   |
      should_email? => true             |
-                                       | BalanceNotice.send("ann@ann.com", 9000)
+                                       | BalanceNotice.mail("ann@ann.com", 9000)
                                        |     @balance = 9000.0
-     BalanceMailer.send(               |
+     BalanceMailer.mail(               |
        "joe@joe.com",                  |
        "Your balance is $9000.0"       |
      )                                 |
                                        |     should_email? => true
-                                       |     BalanceMailer.send(
+                                       |     BalanceMailer.mail(
                                        |       "ann@ann.com",
                                        |       "Your balance is $9000.0"
                                        |     )
 ```
 
 While Ann is happy with this new feature, Joe is ecstatic (for now).
-`BalanceNotice.send` was called with his balance as an argument, but before his
+`BalanceNotice.mail` was called with his balance as an argument, but before his
 email was sent `@balance` was re-bound to Ann's balance.
 
 Unless you anticipate this behavior, this bug might be hard to find. However, it
@@ -72,12 +72,12 @@ with a local variable (`balance`), and passing that local variable to
 `should_email?` as an argument, sanity is returned.
 
 ```ruby
-class BalanceNotitfication
-  def self.send(email, balance)
+class BalanceNotice
+  def self.mail(email, balance)
     balance = balance.to_f
 
     if should_email?(balance)
-      BalanceMailer.send(to: email, subject: "Your balance is #{balance}")
+      BalanceMailer.mail(to: email, subject: "Your balance is #{balance}")
     end
   end
 
@@ -87,6 +87,6 @@ class BalanceNotitfication
 end
 ```
 
-Now each time `.send` is called `balance` will be local to that call. Joe will
+Now each time `.mail` is called `balance` will be local to that call. Joe will
 get Joe's balance (with great disappointment) and Ann will continue to get Ann's
 balance.
