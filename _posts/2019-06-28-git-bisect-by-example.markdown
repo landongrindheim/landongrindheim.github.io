@@ -54,8 +54,8 @@ know there's a bug as recently as `0d328c9`. Let's use that.
 git bisect bad 0d328c9
 ```
 
-Git needs to know when we know things were in a good state. Since we know our
-bug wasn't around in `c8e67bd`, we'll tell Git to use that.
+Next, we need to tell Git the last known good state. Since we know our bug
+wasn't around in `c8e67bd`, we'll use that.
 
 ```bash
 git bisect good c8e67bd
@@ -63,14 +63,15 @@ git bisect good c8e67bd
 
 Now comes the exciting part! We'll provide a command which will be used by Git
 to find the commit which introduced the bug. For simplicity's sake, I'll use
-`rspec`, but it can be anything so long as it returns a non-zero exit code.
+`rspec`, but it can be anything so long as it returns a non-zero exit code when
+there is a problem, and a zero exit code when everything is okay.
 
 ```bash
 git bisect run bundle exec rspec
 ```
 
 `git bisect` will do its thing, performing a [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm)
-to find the offending commit. When it's don
+to find the offending commit. When it's done, it'll return something like this:
 
 ```bash
 a02fd559f5e67e591995ea29ec6b59cee533e7bb is the first bad commit
