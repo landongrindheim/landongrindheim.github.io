@@ -29,10 +29,10 @@ got the following set of commits.
 
 ```bash
 $ git log --oneline --reverse
-c8e67bd We know everything is great here 😄
-3be3992 Everything is still 👌
-a02fd55 Oh no! A bug was introduced here 😬
-0d328c9 (HEAD -> master) The bug still exists 🙁
+9a7ba42 We know everything is great here 😄
+01f0396 Everything is still 👌
+33f470a Oh no! A bug was introduced here 😬
+9f676bb (HEAD -> master) The bug still exists 🙁
 ```
 
 We know that the world was once okay, and that it isn't now. Something changed.
@@ -48,17 +48,17 @@ git bisect start
 
 Next, we'll give Git the sha of a commit which we know is in a bad state. Most
 of the time this will be the latest commit (`HEAD`). In the example above, we
-know there's a bug as recently as `0d328c9`. Let's use that.
+know there's a bug as recently as `9f676bb`. Let's use that.
 
 ```bash
-git bisect bad 0d328c9
+git bisect bad 9f676bb
 ```
 
 Next, we need to tell Git the last known good state. Since we know our bug
-wasn't around in `c8e67bd`, we'll use that.
+wasn't around in `9a7ba42`, we'll use that.
 
 ```bash
-git bisect good c8e67bd
+git bisect good 9a7ba42
 ```
 
 Now comes the exciting part! We'll provide a command which will be used by Git
@@ -71,21 +71,9 @@ git bisect run bundle exec rspec
 ```
 
 `git bisect` will do its thing, performing a [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm)
-to find the offending commit. When it's done, it'll return something like this:
+to find the offending commit. You should see something like this:
 
-```bash
-a02fd559f5e67e591995ea29ec6b59cee533e7bb is the first bad commit
-commit a02fd559f5e67e591995ea29ec6b59cee533e7bb
-Author: Landon Grindheim <landon@please_dont_email_me.com>
-Date:   Wed Jun 26 11:18:28 2019 -0400
-
-Oh no! A bug was introduced here 😬
-
-:040000 040000 6f3ec5c74c92f63257ee3739af6fb3b5fa66e1ed 3e54a644bb352f01f5b6891b898c8b4446a2b5e9 M    spec
-bisect run success
-```
-
-Success!
+![git-bisect](/images/git-bisect-run.gif)
 
 What if you have a bug, but no test to surface it? Git still has you covered! If
 you can't write a test, you can walk Git through the process by performing
