@@ -12,4 +12,4 @@ obsessive all inform his craft.
 
 He currently works at [CoverMyMeds](https://covermymeds.com) as a software
 engineer. He lives in North Carolina's Research Triangle with his wife, Jana,
-and their two sons, Kai and Ezra.
+and their three sons, Kai, Ezra and Nikolai.
