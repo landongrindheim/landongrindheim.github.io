@@ -2,6 +2,7 @@
 layout: page
 title: About
 show_in_nav: true
+order: 99
 permalink: /about
 ---
 
