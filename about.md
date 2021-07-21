@@ -11,6 +11,6 @@ someone that cares about building software. He likes to solve problems and make
 things better. His experiences as art student, Peace Corps volunteer and idea
 obsessive all inform his craft.
 
-He currently works at [CoverMyMeds](https://covermymeds.com) as a software
-engineer. He lives in North Carolina's Research Triangle with his wife, Jana,
-and their three sons, Kai, Ezra and Nikolai.
+He currently works at [GitHub](https://github.com) as a software engineer. He
+lives in North Carolina's Research Triangle with his wife, Jana, and their three
+sons, Kai, Ezra and Nikolai.
