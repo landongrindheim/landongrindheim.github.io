@@ -12,5 +12,5 @@ things better. His experiences as art student, Peace Corps volunteer and idea
 obsessive all inform his craft.
 
 He currently works at [GitHub](https://github.com) as a software engineer. He
-lives in North Carolina's Research Triangle with his wife, Jana, and their three
-sons, Kai, Ezra and Nikolai.
+lives in North Carolina's Research Triangle with his wife, Jana, and their sons
+Kai, Ezra and Wynn. They remember [Nikolai](./nikolai.md).
