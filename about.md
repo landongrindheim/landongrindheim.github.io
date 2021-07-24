@@ -13,4 +13,4 @@ obsessive all inform his craft.
 
 He currently works at [GitHub](https://github.com) as a software engineer. He
 lives in North Carolina's Research Triangle with his wife, Jana, and their sons
-Kai, Ezra and Wynn. They remember [Nikolai](./nikolai.md).
+Kai, Ezra and Wynn. They remember Nikolai.
