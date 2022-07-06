@@ -22,11 +22,11 @@ email: landon@landongrindheim.com
 github_username: landongrindheim
 linkedin_username: landongrindheim
 
-google_analytics: UA-130369213-1
+google_analytics: G-WHBW0KGD9W
 
 # Build settings
 markdown: kramdown
-theme: minima
+remote_theme: jekyll/minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
