@@ -29,7 +29,7 @@
   line-height: $base-line-height * $base-font-size * 2.25;
 
   .nav-trigger {
-      display: none;
+    display: none;
   }
 
   .menu-icon {
@@ -205,6 +205,11 @@
 .post-link {
   display: block;
   @include relative-font-size(1.5);
+
+  .external-domain {
+    color: #444;
+    font-weight: normal;
+  }
 }
 
 
@@ -253,3 +258,4 @@
     }
   }
 }
+

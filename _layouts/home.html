@@ -22,7 +22,7 @@ layout: default
             {{ post.title | escape }}
             {% if external_url %}
               {% assign external_domain = external_url | remove:"https://" | remove:"http://" | split:"/" | first %}
-              <span class="external-domain">(@{{ external_domain }})</span>
+              <span class="external-domain">@ {{ external_domain }}</span>
             {% endif %}
           </a>
         </h3>
