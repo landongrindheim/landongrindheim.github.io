@@ -13,12 +13,17 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
+      {% assign external_url = post.redirect_to %}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
+            {% if external_url %}
+              {% assign external_domain = external_url | remove:"https://" | remove:"http://" | split:"/" | first %}
+              <span class="external-domain">(@{{ external_domain }})</span>
+            {% endif %}
           </a>
         </h3>
         {%- if site.show_excerpts -%}
