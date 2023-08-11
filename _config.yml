@@ -22,8 +22,6 @@ email: landon@landongrindheim.com
 github_username: landongrindheim
 linkedin_username: landongrindheim
 
-google_analytics_tracking_id: UA-130369213-1
-
 # Build settings
 markdown: kramdown
 theme: minima
